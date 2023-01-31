@@ -45,12 +45,16 @@ resource "azurerm_linux_virtual_machine" "VM1" {
   resource_group_name             = azurerm_resource_group.tony.name
   location                        = azurerm_resource_group.tony.location
   size                            = "Standard_B1s"
-  admin_username                  = "madhu"
-  admin_password                  = "Adminadmin@123"
+  admin_username                  = "murali"
+   
   disable_password_authentication = false
   network_interface_ids = [
     azurerm_network_interface.main.id
   ]
+   admin_ssh_key {
+    username   = "murali"
+    public_key = file("~/.ssh/id_rsa.pub")
+  }
   os_disk {
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
@@ -68,7 +72,7 @@ resource "null_resource" "configure_identity" {
   }
   provisioner "local-exec" {
     //command = "ls"
-    command = "sshpass -pAdminadmin@123  ansible-playbook -u madhu -i ${azurerm_linux_virtual_machine.VM1.public_ip_address},playbook.yaml"
+    command = "ansible-playbook -i ${azurerm_linux_virtual_machine.VM1.public_ip_address}, playbook.yaml"
     //sshpass -p <ssh-password> ansible-playbook -u <username> --ask-pass playbooks/monitor-linux-node.yml
   }
   depends_on = [
