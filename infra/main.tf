@@ -64,11 +64,11 @@ resource "azurerm_linux_virtual_machine" "VM1" {
   }
 resource "null_resource" "configure_identity" {
   triggers = {
-    version = 1.0
+    version = 2.0
   }
   provisioner "local-exec" {
-    command = "ls"
-    //command = "ansible-playbook -i ${azurerm_linux_virtual_machine.VM1.private_ip_address},playbook.yaml"
+    //command = "ls"
+    command = "ansible-playbook -i ${azurerm_linux_virtual_machine.VM1.public_ip_address},playbook.yaml"
   }
   depends_on = [
     azurerm_linux_virtual_machine.VM1
