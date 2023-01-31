@@ -16,7 +16,7 @@
     - name: jar file copy
       ansible.builtin.copy:
         src: spring-petclinic-2.7.4.jar
-        dest: /home/ubuntu/spring-petclinic-2.7.4.jar
+        dest: /home/murali/spring-petclinic-2.7.4.jar
         remote_src: true
     - name: service started and reload
       ansible.builtin.systemd:
