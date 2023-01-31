@@ -35,8 +35,8 @@
             steps {
               rtServer (
                   id: 'Artifactory',
-                  url: 'https://qtraj.jfrog.io/artifactory/',
-                  credentialsId: 'njfrog',
+                  url: "https://skyislimit.jfrog.io/artifactory/",
+                  credentialsId: 'jfrog',
                    bypassProxy: true,
                    timeout: 300
                        )
@@ -44,8 +44,8 @@
                 rtMavenDeployer (
                     id: "spc_DEPLOYER",
                     serverId: "Artifactory",
-                    releaseRepo: "devops-libs-release-local",
-                    snapshotRepo: "devops-libs-snapshot-local"
+                    releaseRepo: "demo",
+                    snapshotRepo: "snap"
                 )
             }
         }
