@@ -1,0 +1,45 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springpetclinceployment
+spec:
+  minReadySeconds: 10
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spc
+  strategy:
+    rollingUpdate:
+      maxSurge: 25
+      maxUnavailable: 25
+    type: RollingUpdate
+  template:
+    metadata:
+      name: tempspecspc
+      labels:
+        app: spc
+    spec:
+      containers:
+       - image: beatyourlimits.jfrog.io/mydockerrepo/spc:46
+         name: spc
+         ports:
+          - containerPort: 8080
+      imagePullSecrets:
+        - name: jfrogsecret
+  
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spc-lb
+spec:
+  type: LoadBalancer
+  selector:
+    app: spc
+  ports:
+    - name: appport
+      port: 7070
+      protocol: TCP
+      targetPort: 8080

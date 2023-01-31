@@ -1,0 +1,24 @@
+ 
+trigger:
+  - main
+pool: selfnamepool
+steps:
+  - task: Bash@3
+    displayName: "Workaround: Set environment variables manually"
+    inputs:
+      targetType: 'inline'
+      script: |
+        cd ~
+        echo "##vso[task.setvariable variable=HOME]$(pwd)"
+        echo "##vso[task.setvariable variable=USER]$(whoami)"
+        echo "##vso[task.setvariable variable=JAVA_HOME_11_X64]/usr/lib/jvm/java-11-openjdk-amd64"
+  - task: Maven@3
+    inputs:
+      mavenPomFile: 'pom.xml'
+      mavenOptions: '-Xmx3072m'
+      javaHomeOption: 'JDKVersion'
+      jdkVersionOption: '11'
+      jdkArchitectureOption: 'x64'
+      publishJUnitResults: true
+      testResultsFiles: '**/surefire-reports/TEST-*.xml'
+      goals: 'deploy'
