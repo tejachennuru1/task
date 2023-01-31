@@ -113,9 +113,10 @@ stage ('Publish build info') {
 
         stage ('deploying to servers using ansible ') {
             steps {
-              sh"echo'${RUN_ARTIFACTS_DISPLAY_URL}'"
+              bat "set"
               sh'cd infra && terraform init && terraform apply -auto-approve '
-            }} 
+                   }
+            } 
 
     }
 
