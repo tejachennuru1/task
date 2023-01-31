@@ -68,7 +68,7 @@ resource "azurerm_linux_virtual_machine" "VM1" {
   }
 resource "null_resource" "configure_identity" {
   triggers = {
-    version = 12.0
+    version = 1.0
   }
   provisioner "local-exec" {
     //command = "ls"
