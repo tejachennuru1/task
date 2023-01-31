@@ -146,24 +146,24 @@ rtPublishBuildInfo (
   ```   
 * the service file is 
   ```
-  [Unit]
-Description=springpetclinic java application
-[Service]
-User=murali
-# The configuration file application.properties should be here:
+      [Unit]
+      Description=springpetclinic java application
+      [Service]
+      User=murali
+      # The configuration file application.properties should be here:
 
-#change this to your workspace
-WorkingDirectory=/home/murali/
+      #change this to your workspace
+      WorkingDirectory=/home/murali/
 
-#path to executable.
-#executable is a bash script which calls jar file
-ExecStart=/usr/bin/java -jar spring-petclinic-2.7.4.jar
+      #path to executable.
+      #executable is a bash script which calls jar file
+      ExecStart=/usr/bin/java -jar spring-petclinic-2.7.4.jar
 
-SuccessExitStatus=143
-TimeoutStopSec=10
-Restart=on-failure
-RestartSec=5
+      SuccessExitStatus=143
+      TimeoutStopSec=10
+      Restart=on-failure
+      RestartSec=5
 
-[Install]
-WantedBy=multi-user.target
+      [Install]
+      WantedBy=multi-user.target
   ```
