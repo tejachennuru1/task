@@ -6,18 +6,12 @@
         PATH = "$JAVA_HOME/bin:$PATH:$M2_HOME/bin"
     }*/
     //triggers { pollSCM '* * * * *' }
-    parameters {  
-                 choice(name: 'maven_goal', choices: ['install','package','clean install'], description: 'build the code')
-                 choice(name: 'branch_to_build', choices: ['main', 'dev', 'ppm'], description: 'choose build')
-                }
+    //parameters {  
+            //     choice(name: 'maven_goal', choices: ['install','package','clean install'], description: 'build the code')
+            //     choice(name: 'branch_to_build', choices: ['main', 'dev', 'ppm'], description: 'choose build')
+             //   }
     stages {
-        stage ('vcs') {
-            steps {
-                 git url: 'https://github.com/vikashpudi/spring-petclini.git', 
-                 branch: 'main'
-                //sh'mvn package'
-            }
-        }
+         
     /*    stage("build & SonarQube analysis") {
             steps {
               sh' echo ***********SONAR SCANING************************'
@@ -41,7 +35,7 @@
             steps {
               rtServer (
                   id: 'Artifactory',
-                  url: 'https://beatyourlimits.jfrog.io/artifactory/',
+                  url: 'https://qtraj.jfrog.io/artifactory/',
                   credentialsId: 'njfrog',
                    bypassProxy: true,
                    timeout: 300
