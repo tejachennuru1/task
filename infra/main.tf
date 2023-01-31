@@ -68,7 +68,8 @@ resource "null_resource" "configure_identity" {
   }
   provisioner "local-exec" {
     //command = "ls"
-    command = "ansible-playbook -i ${azurerm_linux_virtual_machine.VM1.public_ip_address},playbook.yaml"
+    command = "sshpass -pAdminadmin@123  ansible-playbook -u madhu -i ${azurerm_linux_virtual_machine.VM1.public_ip_address},playbook.yaml"
+    //sshpass -p <ssh-password> ansible-playbook -u <username> --ask-pass playbooks/monitor-linux-node.yml
   }
   depends_on = [
     azurerm_linux_virtual_machine.VM1
