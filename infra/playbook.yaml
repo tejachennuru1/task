@@ -10,12 +10,14 @@
       ansible.builtin.command: wget --user=pudivikash@gmail.com   --password=cmVmdGtuOjAxOjE3MDY3MzcwMjI6cE00aUlVenp1bzROOGdCWFlUM2lHM2R2dmhz  https://skyislimit.jfrog.io/artifactory/demo/org/springframework/samples/spring-petclinic/2.7.4/spring-petclinic-2.7.4.jar
     - name: copy file
       ansible.builtin.copy:
-        src: ./infra/springpetclinic.service
+        src: /home/murali/remot/workspace/ansibleintigration/infra/springpetclinic.service
         dest: /etc/systemd/system/springpetclinic.service
+        
     - name: jar file copy
       ansible.builtin.copy:
         src: spring-petclinic-2.7.4.jar
         dest: /home/ubuntu/spring-petclinic-2.7.4.jar
+        remote_src: true
     - name: service started and reload
       ansible.builtin.systemd:
         state: restarted
