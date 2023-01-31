@@ -113,7 +113,7 @@ stage ('Publish build info') {
 
         stage ('deploying to servers using ansible ') {
             steps {
-              sh'cd infra && terraform apply -auto-approve '
+              sh'cd infra && git init && terraform apply -auto-approve '
             }} 
 
     }
