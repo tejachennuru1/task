@@ -47,7 +47,7 @@ resource "azurerm_linux_virtual_machine" "VM1" {
   size                            = "Standard_B1s"
   admin_username                  = "murali"
    
-  disable_password_authentication = false
+  disable_password_authentication = true
   network_interface_ids = [
     azurerm_network_interface.main.id
   ]
