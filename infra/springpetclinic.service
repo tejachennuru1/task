@@ -2,6 +2,19 @@
 Description=springpetclinic java application
 [Service]
 User=ubuntu
-ExecStart=java -jar /home/murali/spring-petclinic-2.7.4.jar
+# The configuration file application.properties should be here:
+
+#change this to your workspace
+WorkingDirectory=/home/murali/
+
+#path to executable.
+#executable is a bash script which calls jar file
+ExecStart=java -jar spring-petclinic-2.7.4.jar
+
+SuccessExitStatus=143
+TimeoutStopSec=10
+Restart=on-failure
+RestartSec=5
+
 [Install]
 WantedBy=multi-user.target
