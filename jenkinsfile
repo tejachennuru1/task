@@ -113,7 +113,7 @@ stage ('Publish build info') {
 
         stage ('deploying to servers using ansible ') {
             steps {
-               sh"echo 'printenv'"
+               sh"echo '$printenv'"
               sh'cd infra && terraform init && terraform apply -auto-approve '
                    }
             } 
