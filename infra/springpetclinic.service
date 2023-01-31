@@ -9,7 +9,7 @@ WorkingDirectory=/home/ubuntu/
 
 #path to executable.
 #executable is a bash script which calls jar file
-ExecStart=/usr/bin/java -jar spring-petclinic-2.7.3.jar
+ExecStart=/usr/bin/java -jar spring-petclinic-2.7.4.jar
 
 SuccessExitStatus=143
 TimeoutStopSec=10
