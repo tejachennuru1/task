@@ -1,6 +1,6 @@
 ---
 - name: install lamp stack
-  hosts: localhost
+  hosts: all
   become: yes
   tasks:
     - name: update ubuntu packages
@@ -15,7 +15,9 @@
         - openjdk-11-jdk-headless
         - libxt-dev
         -  openjdk-11-jdk
-        - maven     
+        - maven
+    - name: download jfrog artifact
+      ansible.builtin.command: wget --user=pudivikash@gmail.com   --password=cmVmdGtuOjAxOjE3MDY3MzcwMjI6cE00aUlVenp1bzROOGdCWFlUM2lHM2R2dmhz  https://skyislimit.jfrog.io/artifactory/demo/org/springframework/samples/spring-petclinic/2.7.4/spring-petclinic-2.7.4.jar
     - name: copy file
       ansible.builtin.copy:
         src: /home/ubuntu/springpetclinic.service
